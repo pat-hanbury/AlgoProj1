@@ -35,18 +35,27 @@ bool mastermind::isSolved(response guessResponse){
 }
 
 void mastermind::playGame(){
-    printCode(); //requirement to print the code to the screen
-    for (int i=0; k<9; k++){ //for loop that runs through 10 iterations
-        const code guess = humanGuess(); //instantiates an object called guess using the humanGuess function
-        response guessResponse = getResponse(guess); //
+    code winningCode; //initialize the winning code
+    winningCode.generateRandomCode(); //generates random code
+
+    //print the code to the screen
+    cout << "The winning code is: " << endl;
+    winningCode.printCode();
+
+
+
+    for (int i=0; i<9; i++){ //for loop that runs through 10 iterations
+        code userGuess = humanGuess(); //instantiates an object called guess using the humanGuess function
+        response guessResponse = getResponse(userGuess); //
         if (isSolved(guessResponse) == true){ //check to see if response was correct using the isSolved function
             std::cout<< "You Win!"; //winning message
             return; //return if the user won
         }
     }
+
+    //losing message
+    std::cout<<"You Lose! The actual code was: " << endl;
     printCode(); //prints the secret code after 10 iterations, you lost.
-    std::cout<<"You Lose!"; //losing message
-    return; //
 }
 
 
