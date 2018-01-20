@@ -7,9 +7,9 @@
 #define MASTERMIND_H_INCLUDED
 
 class mastermind{
-private:
-
 public:
+    code winningCode;
+    code userGuess;
     void printCode();
     void humanGuess();
     response getResponse(const code &guess);
