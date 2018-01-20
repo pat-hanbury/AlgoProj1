@@ -6,19 +6,25 @@
 #include "mastermind.h"
 
 
-void mastermind::printCode(){
-    winningCode.printCode(); //prints the member function printCode from somwehere
+code mastermind::humanGuess(){
+    code inputtedGuess; //initialize local code object
+    //initialize variables for 4 digit code
+    int digit;
+    std::cout << "Please enter your guess" << endl; //prompt user
+    for (int i = 0; i < 4 ; i++){
+        cin >> digit;
+        //check if input digit is within range
+        if (digit > 9 || digit < 1 ){
+            cout << "Invalid input guess. Try inputting digit again" << endl;
+                 i--;
+        }
+        else{
+            //add digit to vector containing code in inputtedGuess
+            inputtedGuess.vectorCode.push_back(digit);
+        }
+    }
+    return inputtedGuess; //return code object inputtedGuess
 }
-
-void mastermind::humanGuess(){
-    somehow get the humanguess..
-}
-
-
-
-
-
-
 
 response mastermind::getResponse(const code &guess){
     response guessResponse(winningCode, guess); //Constructor, and a guessResponse is instantiated
@@ -39,7 +45,7 @@ void mastermind::playGame(){
     winningCode.generateRandomCode(); //generates random code
 
     //print the code to the screen
-    cout << "The winning code is: " << endl;
+    std::cout << "The winning code is: " << endl;
     winningCode.printCode();
 
 
@@ -49,7 +55,6 @@ void mastermind::playGame(){
         response guessResponse = getResponse(userGuess); //
         if (isSolved(guessResponse) == true){ //check to see if response was correct using the isSolved function
             std::cout<< "You Win!"; //winning message
-            return; //return if the user won
         }
     }
 
