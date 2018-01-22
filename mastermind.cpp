@@ -26,6 +26,7 @@ code mastermind::humanGuess(){
     return inputtedGuess; //return code object inputtedGuess
 }
 
+
 response mastermind::getResponse(const code &guess){
     response guessResponse(winningCode, guess); //Constructor, and a guessResponse is instantiated
     return guessReponse; //returns a guessResponse object
