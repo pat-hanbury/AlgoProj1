@@ -3,6 +3,8 @@
 //
 
 #include "code.h"
+#include "response.h"
+#include "mastermind.h"
 #include "cstdlib"
 #include "vector"
 #include "algorithm"

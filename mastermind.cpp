@@ -4,6 +4,8 @@
 //class mastermind.cpp
 
 #include "mastermind.h"
+#include "code.h"
+#include "response.h"
 
 
 code mastermind::humanGuess(){
