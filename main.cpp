@@ -1,10 +1,11 @@
+//John Kang and Patrick Hanbury
+//Fundamental of Algorithms
+//Project1
+//main.cpp
+
 #include <iostream>
 #include "mastermind.h"
-#include "mastermind.cpp"
 #include "code.h"
-//still need to write code.cpp
-//#include "code.cpp"
-
 #include "response.h"
 
 using namespace std;

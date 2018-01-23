@@ -1,42 +1,40 @@
-//
-// Created by Patrick on 1/22/2018.
-//
+//John Kang and Patrick Hanbury
+//Fundamental of Algorithms
+//Project1
+//class code.cpp
 
 #include "code.h"
-#include "response.h"
-#include "mastermind.h"
-#include "cstdlib"
-#include "vector"
-#include "algorithm"
 
-void generateRandomCode() //generates a random and stores it in vectorCode
+void code::generateRandomCode() //generates a random and stores it in vectorCode
 {
+    srand(time(NULL));
     //loop over 4 digits of vectorCode
     for (int i = 0; i < 4 ; i++)
     {
+        vectorCode.push_back(std::rand() % 6);
         //generate a random number between 0 and 5
-        randNum = rand()%6;
+        //int randNum = rand()%6;
         //store random number in vectorCode
-        vectorCode[i] = randNum;
+        //vectorCode.push_back(randNum);
     }
 }
 
-int checkCorrect(const code &guess)
+int code::checkCorrect(const code &guess)
 {
     int correctNumbersAndPlace = 0; //number of numbers from guess in correct number and place
     for (int i = 0; i < 4; i++)
     {
         //check if any correct numbers of guess are in the correct place
-        if {vectorCode[i] == guess.vectorCode[i])
+        if (vectorCode[i] == guess.vectorCode[i])
             {
                 correctNumbersAndPlace++; //increase temp variable
             }
-            }
     }
+
     return correctNumbersAndPlace; //output the number
 }
 
-int checkIncorrect(const code &guess)
+int code::checkIncorrect(const code &guess)
 {
     vector<int> correctNumbersVector(0); //initialize vector to size 0
     //loop over vectorCode
@@ -62,4 +60,18 @@ int checkIncorrect(const code &guess)
             }
         }
     }
+    return correctNumbersVector.size();
+}
+
+void code::printCode()
+{
+    //set up formatting
+    cout << "[ ";
+    //loop over vectorCode vector
+    for (int i = 0; i <4 ; i++)
+    {
+        //output each digit of the code
+        cout << vectorCode[i];
+    }
+    cout << " ]" << endl;
 }

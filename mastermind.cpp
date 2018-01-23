@@ -3,20 +3,19 @@
 //Project1
 //class mastermind.cpp
 
+
 #include "mastermind.h"
-#include "code.h"
-#include "response.h"
 
 
 code mastermind::humanGuess(){
     code inputtedGuess; //initialize local code object
     //initialize variables for 4 digit code
     int digit;
-    std::cout << "Please enter your guess" << endl; //prompt user
+    cout << "Please enter your guess" << endl; //prompt user
     for (int i = 0; i < 4 ; i++){
         cin >> digit;
         //check if input digit is within range
-        if (digit > 9 || digit < 1 ){
+        if (digit > 9 || digit < 0 ){
             cout << "Invalid input guess. Try inputting digit again" << endl;
                  i--;
         }
@@ -31,11 +30,11 @@ code mastermind::humanGuess(){
 
 response mastermind::getResponse(const code &guess){
     response guessResponse(winningCode, guess); //Constructor, and a guessResponse is instantiated
-    return guessReponse; //returns a guessResponse object
+    return guessResponse; //returns a guessResponse object
 }
 
 bool mastermind::isSolved(response guessResponse){
-    if (guessResponse.getCorrect() == 4){ //displays whatever the stored value of the response was
+    if (guessResponse.Correct == 4){ //displays whatever the stored value of the response was
         return true; //if the guess is 4, then the guess is correct and returns true.
     }
     else{
@@ -44,7 +43,6 @@ bool mastermind::isSolved(response guessResponse){
 }
 
 void mastermind::playGame(){
-    code winningCode; //initialize the winning code
     winningCode.generateRandomCode(); //generates random code
 
     //print the code to the screen
@@ -58,12 +56,18 @@ void mastermind::playGame(){
         response guessResponse = getResponse(userGuess); //
         if (isSolved(guessResponse) == true){ //check to see if response was correct using the isSolved function
             std::cout<< "You Win!"; //winning message
+            return;
+        }
+        else
+        {
+            cout << "Incorrect Guess." << endl;
+            cout << "[ " << guessResponse.Correct << " " << guessResponse.Incorrect << " ]" << endl;
         }
     }
 
     //losing message
     std::cout<<"You Lose! The actual code was: " << endl;
-    printCode(); //prints the secret code after 10 iterations, you lost.
+    winningCode.printCode(); //prints the secret code after 10 iterations, you lost.
 }
 
 

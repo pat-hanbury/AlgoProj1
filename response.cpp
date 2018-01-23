@@ -3,14 +3,14 @@
 //Project1
 //class response.cpp
 
+#include <iostream>
 #include "response.h"
-#include "code.h"
+
 
 void response::setResponse(code &winningCode, const code &guess){ //formula to set the individual stored values
-    bool correctNumber[4] = {0,0,0,0};//Array for the guess secret code
-    bool correctPlace[4] = {0,0,0,0}; //another array for the secret code
-    Correct = winningCode.checkCorrect(guess, &correctNumber[0], &correctPlace[0]); //Correct is the return for the checkCorrect function
-    Incorret = winningCode.checkIncorrect(guess, &correctNumber[0], &correctPlace[0]); //Incorrect is the return for the checkIncorrect function.
+
+    Correct = winningCode.checkCorrect(guess); //Correct is the return for the checkCorrect function
+    Incorrect = winningCode.checkIncorrect(guess); //Incorrect is the return for the checkIncorrect function.
 }
 
 bool response::compareResponse(response& newResponse){ //function to compare the Correct and Incorrect variables
@@ -21,7 +21,7 @@ bool response::compareResponse(response& newResponse){ //function to compare the
 }
 
 void response::printResponse(){ //Print function that prints the response
-    std::cout<<" ("<<this->Correct<<","<<this->Incorrect<<")"<<std::endl; //prints the two variables Correct & Incorrect in the right format.
+    cout<<" ("<<this->Correct<<","<<this->Incorrect<<")"<<std::endl; //prints the two variables Correct & Incorrect in the right format.
 }
 
 response::response(code &winningCode, const code &guess){
